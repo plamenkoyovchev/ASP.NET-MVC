@@ -1,0 +1,39 @@
+﻿@model _03.InformationalSystem.ViewModel.CreateCategoryViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm("Create","Category")) 
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset class="form-horizontal">
+        <legend>Category</legend>
+
+        <div class="control-group">
+            @Html.LabelFor(model => model.CategoryName, new { @class = "control-label" })
+            <div class="controls">
+                @Html.EditorFor(model => model.CategoryName)
+                @Html.ValidationMessageFor(model => model.CategoryName, null, new { @class = "help-inline" })
+            </div>
+        </div>
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Create" class="btn" />
+        </div>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

@@ -1,0 +1,39 @@
+﻿@model _03.InformationalSystem.Models.Book
+
+<fieldset>
+    <legend>Book</legend>
+    <dl>
+        <dt>
+            @Html.DisplayName("Category")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category.CategoryName)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("By User")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Title")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Content")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Content)
+        </dd>
+
+    </dl>
+</fieldset>
