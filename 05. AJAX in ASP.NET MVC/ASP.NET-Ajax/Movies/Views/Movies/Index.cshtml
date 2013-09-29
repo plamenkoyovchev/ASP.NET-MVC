@@ -1,0 +1,94 @@
+﻿@model IEnumerable<Movies.Models.Movie>
+
+@{
+    ViewBag.Title = "Movies";
+}
+
+<h2>Movies</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Title")
+        </th>
+        <th>
+            @Html.DisplayName("Year")
+        </th>
+        <th>
+            @Html.DisplayName("Director")
+        </th>
+        <th>
+            @Html.DisplayName("Studio Address")
+        </th>
+        <th>
+            @Html.DisplayName("Studio")
+        </th>
+        <th>Actions</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Year.Year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Director)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudioAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Studio)
+            </td>
+            <td>
+                @Ajax.ActionLink("Edit", "Edit", new { id = item.Id },
+                new AjaxOptions()
+                {
+                    HttpMethod = "GET",
+                    InsertionMode = InsertionMode.Replace,
+                    UpdateTargetId = "edit-movie"
+                }) |
+                @Ajax.ActionLink("Details", "Details", new { id = item.Id }, new AjaxOptions()
+               {
+                   HttpMethod = "GET",
+                   InsertionMode = InsertionMode.Replace,
+                   UpdateTargetId = "details-movie"
+               }) |
+                @Ajax.ActionLink("Delete", "Delete", new { id = item.Id }, new AjaxOptions()
+                   {
+                       HttpMethod = "GET",
+                       InsertionMode = InsertionMode.Replace,
+                       UpdateTargetId = "delete-movie"
+                   })
+            </td>
+        </tr>
+    }
+
+</table>
+
+@*<div class="pagedList" id="movies-list">
+    @Html.PagedListPager(Model, page=> Url.Action("Index", new {page}),
+    PagedListRenderOptions.MinimalWithItemCountText)
+</div>*@
+
+<p>
+    @Ajax.ActionLink("Create new", "Create", null, new AjaxOptions()
+    {
+        HttpMethod = "GET",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "create-movie-form"
+    }, new { id = "btn-show-create-form", @class = "btn" })
+</p>
+
+<div id="create-movie-form"></div>
+<div id="delete-movie"></div>
+<div id="edit-movie"></div>
+<div id="details-movie"></div>
+
+<script>
+
+</script>

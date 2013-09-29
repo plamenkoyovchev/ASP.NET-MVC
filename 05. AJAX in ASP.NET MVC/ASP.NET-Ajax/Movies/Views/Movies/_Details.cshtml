@@ -1,0 +1,56 @@
+﻿@model Movies.Models.Movie
+
+<fieldset>
+    <legend>Movie</legend>
+    <dl>
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Year)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Year)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Director)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Director)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StudioAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudioAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Studio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Studio)
+        </dd>
+
+    </dl>
+</fieldset>
+<p>
+        @Ajax.ActionLink("Edit", "Edit", new { id = Model.Id }, new AjaxOptions()
+            {
+                HttpMethod = "GET",
+                InsertionMode = InsertionMode.Replace,
+                UpdateTargetId = "edit-movie"
+            }) |
+        @Html.ActionLink("Back to List", "Index")
+</p>

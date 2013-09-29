@@ -1,0 +1,110 @@
+﻿@model Movies.ViewModels.MovieViewModel
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset class="form-horizontal">
+        <legend>Movie</legend>
+
+        <div class="control-group">
+            @Html.LabelFor(model => model.Title, new { @class = "control-label" })
+            <div class="controls">
+                @Html.EditorFor(model => model.Title)
+                @Html.ValidationMessageFor(model => model.Title, null, new { @class = "help-inline" })
+            </div>
+        </div>
+
+        <div class="control-group">
+            @Html.LabelFor(model => model.Year.Year, new { @class = "control-label" })
+            <div class="controls">
+                @Html.EditorFor(model => model.Year)
+                @Html.ValidationMessageFor(model => model.Year, null, new { @class = "help-inline" })
+            </div>
+        </div>
+
+        <div class="control-group">
+            @Html.LabelFor(model => model.Director, new { @class = "control-label" })
+            <div class="controls">
+                @Html.EditorFor(model => model.Director)
+                @Html.ValidationMessageFor(model => model.Director, null, new { @class = "help-inline" })
+            </div>
+        </div>
+
+        <div class="control-group">
+            @Html.LabelFor(model => model.StudioAddress, new { @class = "control-label" })
+            <div class="controls">
+                @Html.EditorFor(model => model.StudioAddress)
+                @Html.ValidationMessageFor(model => model.StudioAddress, null, new { @class = "help-inline" })
+            </div>
+        </div>
+
+        <div class="control-group">
+            @Html.LabelFor(model => model.Studio, new { @class = "control-label" })
+            <div class="controls">
+                @Html.EditorFor(model => model.Studio)
+                @Html.ValidationMessageFor(model => model.Studio, null, new { @class = "help-inline" })
+            </div>
+        </div>
+
+        <fieldset>
+            <legend>Male Lead Role</legend>
+            <div class="control-group">
+                @Html.LabelFor(model => model.LeadingMaleRole.Name, new { @class = "control-label" })
+                <div class="controls">
+                    @Html.EditorFor(model => model.LeadingMaleRole.Name)
+                    @Html.ValidationMessageFor(model => model.LeadingMaleRole.Name, null, new { @class = "help-inline" })
+                </div>
+            </div>
+
+            <div class="control-group">
+                @Html.LabelFor(model => model.LeadingMaleRole.Age, new { @class = "control-label" })
+                <div class="controls">
+                    @Html.EditorFor(model => model.LeadingMaleRole.Age)
+                    @Html.ValidationMessageFor(model => model.LeadingMaleRole.Age, null, new { @class = "help-inline" })
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Female Lead Role</legend>
+            <div class="control-group">
+                @Html.LabelFor(model => model.LeadingFemaleRole.Name, new { @class = "control-label" })
+                <div class="controls">
+                    @Html.EditorFor(model => model.LeadingFemaleRole.Name)
+                    @Html.ValidationMessageFor(model => model.LeadingFemaleRole.Name, null, new { @class = "help-inline" })
+                </div>
+            </div>
+            <div class="control-group">
+                @Html.LabelFor(model => model.LeadingFemaleRole.Age, new { @class = "control-label" })
+                <div class="controls">
+                    @Html.EditorFor(model => model.LeadingFemaleRole.Age)
+                    @Html.ValidationMessageFor(model => model.LeadingFemaleRole.Age, null, new { @class = "help-inline" })
+                </div>
+            </div>
+        </fieldset>
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Create" class="btn" />
+            <input type="button" value="Cancel" class="btn btn-hide-create-form" />
+        </div>
+    </fieldset>
+}
+
+<script>
+
+    $("#btn-show-create-form").click(function () {
+        $("#btn-show-create-form").hide();
+    });
+
+    $(".btn-hide-create-form").click(function () {
+        $("#create-movie-form").hide();
+        $("#btn-show-create-form").show();
+    });
+
+    $("#btn-show-create-form").click(function () {
+        $("#create-movie-form").show();
+        $("#btn-show-create-form").hide();
+    });
+
+</script>
